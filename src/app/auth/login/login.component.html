@@ -1,0 +1,45 @@
+<br>
+<br>
+<div class="container">
+    <div class="card border">
+        <div class="card-body">
+            <h4 class="card-title text-center">Enter your credentials</h4>
+            <hr>
+            <form [formGroup]="loginForm" (ngSubmit)="loginCredentials()">
+                <!-- User Name -->
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" id="userName" placeholder="Enter User Name"
+                           formControlName="userName" class="form-control">
+                    <div *ngIf="isSubmitted && formControls.userName.errors" class="text-danger">
+                        <div *ngIf="formControls.userName.errors.required">
+                            User Name is required
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter Password"
+                           formControlName="password" class="form-control">
+                    <div *ngIf="isSubmitted && formControls.password.errors" class="text-danger">
+                        <div *ngIf="formControls.password.errors.required">
+                            Password is required
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark btn-lg form-control">Submit</button>
+                </div>
+
+                <!-- Error Message -->
+                <div *ngIf="error" class="text-danger text-center">
+                    {{ error }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
